@@ -24,7 +24,7 @@ type SavedItem {
     image: String!
     url: String!
     location: String!
-    rating: Int!
+    rating: Float!
     categories: [String]!
     price: String
 }
