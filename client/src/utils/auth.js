@@ -1,4 +1,5 @@
-// use this to decode a token and get the user's information out of it
+// Client side authorization 
+
 import decode from 'jwt-decode';
 
 // This class contains helper methods for auth
