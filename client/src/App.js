@@ -2,10 +2,12 @@
 import React from 'react';
 import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 // Import components and styles
 import Nav from './components/Nav/Nav';
 import './app.css';
+import Login from './pages/Login';
 
 const App = () => {
 
@@ -36,9 +38,17 @@ const App = () => {
 
   return (
     <ApolloProvider client={client}>
-      <div className="my-container">
-        <Nav/>
-      </div>
+      <Router>
+        <>
+        <div className="my-container">
+          <Nav/>
+          <Switch>
+            <Route exact path="/login" component={Login}/>
+            <Route render={() => <div className="container"><h1 className='center-align'>404 Error: This page does not exist.</h1></div>} />
+          </Switch>
+        </div>
+        </>
+      </Router>
     </ApolloProvider>
   )
 }
