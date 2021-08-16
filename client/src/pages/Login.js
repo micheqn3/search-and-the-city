@@ -1,7 +1,8 @@
 // Log in page 
 
 import React from 'react';
-import './login-create.css'
+import './login-create.css';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
     return (
@@ -28,7 +29,7 @@ const Login = () => {
                         </div>
                     </div>
                 </form>
-                <a href="!#" className="create">Create An Account</a>
+                <Link to="/createaccount"><a href="!#" className="create">Create An Account</a></Link>
             </div>
             <footer id="main-footer">Made with <i className="material-icons tiny my-heart-icon">favorite</i> by Mich</footer>
         </div>

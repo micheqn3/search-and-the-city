@@ -3,6 +3,7 @@
 import React from 'react';
 import './nav.css';
 import Auth from '../../utils/auth';
+import { Link } from 'react-router-dom';
 
 const Nav = () => {
     return (
@@ -17,7 +18,7 @@ const Nav = () => {
                             <li><a onClick={Auth.logout} href="!#" className="nav-tab black-text">Log Out</a></li>
                             </>
                         ) : (
-                            <li><a href="!#" className="nav-tab black-text">Log In</a></li>
+                            <Link to="/login"><li><a href="!#" className="nav-tab black-text">Log In</a></li></Link>
                         )}
                     </ul>
                 </div>
