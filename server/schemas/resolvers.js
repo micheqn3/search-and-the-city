@@ -5,8 +5,9 @@ const { User } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
-    Query: {
-        me: async (parent, args, context) => {
+    Query: { 
+        // Retrieves a single user
+        me: async (parent, args, context) => { 
             if (context.user) {
                 return await User.findOne({_id: context.user._id});
             }
@@ -14,7 +15,8 @@ const resolvers = {
         },
     },
     Mutation: {
-        login: async (parent, {email, password}) => {
+        // Login a user
+        login: async (parent, {email, password}) => { 
             const user = await User.findOne({email});
             if (!user) {
                 throw new AuthenticationError('No user found with this email!');
@@ -28,7 +30,8 @@ const resolvers = {
             const token = signToken(user);
             return { token, user };
         },
-        addUser: async (parent, {username, email, password}) => {
+        // Add a user
+        addUser: async (parent, {username, email, password}) => { 
             const user = await User.create({ username, email, password });
             const token = signToken(user);
             return { token, user };
