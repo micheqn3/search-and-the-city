@@ -1,5 +1,9 @@
 /*** Log in + create account styles  **/
 
+body {
+    background-color: #fff;
+}
+
 .signin-container {
     flex-direction: column;
     align-items: center;

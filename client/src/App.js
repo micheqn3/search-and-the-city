@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Nav from './components/Nav/Nav';
 import './app.css';
 import Login from './pages/Login';
+import CreateAccount from './pages/CreateAccount';
 
 const App = () => {
 
@@ -44,6 +45,7 @@ const App = () => {
           <Nav/>
           <Switch>
             <Route exact path="/login" component={Login}/>
+            <Route exact path="/createaccount" component={CreateAccount}/>
             <Route render={() => <div className="container"><h1 className='center-align'>404 Error: This page does not exist.</h1></div>} />
           </Switch>
         </div>
