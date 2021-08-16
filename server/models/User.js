@@ -17,12 +17,14 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    /*
     itineraries: [ // References itinerary model
-        {
-          type: Schema.Types.ObjectId,
-          ref: 'Itinerary', 
-        },
-      ],    
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Itinerary', 
+      },
+    ],
+    */
   },
 );
 
