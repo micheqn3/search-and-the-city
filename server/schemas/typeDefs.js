@@ -16,9 +16,15 @@ type Auth {
 }
 
 # Define query types 
-
+type Query {
+    me: User
+}
 
 # Mutation types
+type Mutation {
+    login(email: String!, password: String!): Auth
+    addUser(username: String!, email: String!, password: String!): Auth
+}
 `
 
 module.exports = typeDefs;
