@@ -8,6 +8,25 @@ type User {
     _id: ID
     username: String!
     email: String!
+    itineraries: [Itinerary]!
+}
+
+type Itinerary {
+    _id: ID
+    name: String!
+    savedItems: [SavedItem]!
+}
+
+type SavedItem {
+    _id: ID
+    yelpID: String!
+    name: String!
+    image: String!
+    url: String!
+    location: String!
+    rating: Int!
+    categories: [String]!
+    price: String
 }
 
 type Auth {

@@ -7,26 +7,27 @@ const userSchema = new Schema(
     username: {
       type: String,
       required: true,
+      unique: true
     },
     email: {
       type: String,
       required: true,
+      unique: true,
       match: [/.+@.+\..+/, 'Must use a valid email address'],
     },
     password: {
       type: String,
       required: true,
     },
-    /*
     itineraries: [ // References itinerary model
       {
         type: Schema.Types.ObjectId,
         ref: 'Itinerary', 
       },
     ],
-    */
   },
 );
+
 
 // Hashes user password before saving to db
 userSchema.pre('save', async function (next) {

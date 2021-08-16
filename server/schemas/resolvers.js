@@ -1,7 +1,7 @@
 // Resolvers for type definitions
 
 const { AuthenticationError } = require('apollo-server-express');
-const { User } = require('../models');
+const { User, Itinerary  } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -9,7 +9,7 @@ const resolvers = {
         // Retrieves a single user
         me: async (parent, args, context) => { 
             if (context.user) {
-                return await User.findOne({_id: context.user._id});
+                return await User.findOne({_id: context.user._id}).populate('itineraries');
             }
             throw new AuthenticationError('You need to be logged in!');
         },
