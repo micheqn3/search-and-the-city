@@ -29,7 +29,7 @@ const Login = () => {
                         </div>
                     </div>
                 </form>
-                <Link to="/createaccount"><a href="!#" className="create">Create An Account</a></Link>
+                <Link to="/createaccount" className="create">Create An Account</Link>
             </div>
             <footer id="main-footer">Made with <i className="material-icons tiny my-heart-icon">favorite</i> by Mich</footer>
         </div>

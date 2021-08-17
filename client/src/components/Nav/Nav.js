@@ -18,7 +18,8 @@ const Nav = () => {
                             <li><a onClick={Auth.logout} href="!#" className="nav-tab black-text">Log Out</a></li>
                             </>
                         ) : (
-                            <Link to="/login"><li><a href="!#" className="nav-tab black-text">Log In</a></li></Link>
+
+                            <Link className="nav-tab black-text" to="/login"><li>Log In </li></Link>
                         )}
                     </ul>
                 </div>
