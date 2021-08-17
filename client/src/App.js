@@ -9,6 +9,7 @@ import Nav from './components/Nav/Nav';
 import './app.css';
 import Login from './pages/Login';
 import CreateAccount from './pages/CreateAccount';
+import Home from './pages/Home';
 
 const App = () => {
 
@@ -44,6 +45,7 @@ const App = () => {
         <div className="my-container">
           <Nav/>
           <Switch>
+            <Route exact path="/" component={Home}/>
             <Route exact path="/login" component={Login}/>
             <Route exact path="/createaccount" component={CreateAccount}/>
             <Route render={() => <div className="container"><h1 className='center-align'>404 Error: This page does not exist.</h1></div>} />
