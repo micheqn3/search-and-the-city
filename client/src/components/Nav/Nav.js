@@ -15,7 +15,7 @@ const Nav = () => {
                         {Auth.loggedIn() ? (
                             <>
                             <li><a href="!#" className="nav-tab black-text">Itinerary</a></li>
-                            <li><a onClick={Auth.logout} href="/login" className="nav-tab black-text">Log Out</a></li>
+                            <li><a onClick={Auth.logout} href="/" className="nav-tab black-text">Log Out</a></li>
                             </>
                         ) : (
 
