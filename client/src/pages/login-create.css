@@ -4,6 +4,12 @@ body {
     background-color: #fff;
 }
 
+.my-container {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden; 
+}
+
 .signin-container {
     flex-direction: column;
     align-items: center;
