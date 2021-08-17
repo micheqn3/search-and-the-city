@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import './login-create.css';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { LOGIN_USER } from '../utils/mutations';
 import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
@@ -39,6 +39,11 @@ const Login = () => {
         } catch (error) {
             setErrorMessage('There was an issue in logging you in.');
         }
+    }
+
+    // If user is already logged in, redirect to home
+    if (Auth.loggedIn()) {
+        return <Redirect to="/"/>
     }
     
     return (

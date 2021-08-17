@@ -5,6 +5,7 @@ import './login-create.css';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
+import { Redirect } from 'react-router';
 
 const CreateAccount = () => {
 
@@ -37,6 +38,11 @@ const CreateAccount = () => {
         } catch (error) {
             setErrorMessage('There was an issue with creating your account.');
         }
+    }
+
+    // If user is already logged in, redirect to home
+    if (Auth.loggedIn()) {
+        return <Redirect to="/"/>
     }
 
     return (
