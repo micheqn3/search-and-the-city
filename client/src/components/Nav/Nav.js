@@ -11,15 +11,15 @@ const Nav = () => {
             <nav id='my-nav'> 
                 <div className="nav-wrapper">
                     <ul>
-                        <li><a href="!#" className="nav-tab travlr black-text"><i className="material-icons left">location_on</i>Home</a></li>
+                        <Link to="/" className="nav-tab travlr black-text"><i className="material-icons left">location_on</i>Home</Link>
                         {Auth.loggedIn() ? (
                             <>
                             <li><a href="!#" className="nav-tab black-text">Itinerary</a></li>
-                            <li><a onClick={Auth.logout} href="!#" className="nav-tab black-text">Log Out</a></li>
+                            <li><a onClick={Auth.logout} href="/login" className="nav-tab black-text">Log Out</a></li>
                             </>
                         ) : (
 
-                            <Link className="nav-tab black-text" to="/login"><li>Log In </li></Link>
+                            <Link to="/login" className="nav-tab black-text"><li>Log In </li></Link>
                         )}
                     </ul>
                 </div>
