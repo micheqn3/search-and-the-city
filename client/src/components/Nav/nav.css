@@ -1,0 +1,42 @@
+/**** Nav styles ****/
+
+#my-nav {
+    background-color: rgba(0,0,0,0);
+    box-shadow: none;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+}
+
+.nav-tab {
+    font-size: 15px;
+}
+
+nav ul a:hover {
+    background-color: rgba(0, 0, 0, 0) !important;
+}
+
+.travlr {
+    font-size: 23px;
+}
+
+@media all and (max-width:800px) {
+    #my-nav {
+      flex-direction: column;
+      padding: 10px;
+    }
+}
+
+@media all and (max-width:375px) {
+    .nav-tab {
+        font-size: 10px;
+    }
+}
+
+@media all and (min-width:414px) {
+    .nav-tab {
+        font-size: 15px;
+    }
+}

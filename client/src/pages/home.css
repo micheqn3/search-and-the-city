@@ -1,0 +1,136 @@
+/**** Home styles  ****/
+
+.my-container {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden; 
+}
+
+.hero-container {
+    margin: 0;
+    background: url('../images/home-page-img.jpg') no-repeat center center fixed; 
+    background-size: cover;
+}
+
+.title {
+    font: normal 100 3rem/1 'Roboto';
+    letter-spacing: .5em;
+    position: relative;
+    bottom: 70px;
+    text-align: center;
+}
+
+.home-second-title {
+    font-size: 20px;
+    color: black;
+    text-align: center;
+    position: relative;
+    bottom: 60px;
+}
+  
+#searchbtn, #searchbox {
+    box-sizing: border-box;
+    transition: background-color, 0.3s;
+    font-size: 20px;
+    line-height: 1;
+    color: #fff;
+    border-radius: 0;
+    float: left;
+    border: none;
+    height: 50px;
+    outline: none;
+    background: #76c4ff;
+}
+
+#searchbox {
+    padding: 0px 20px;
+}
+
+#searchbox:focus, #searchbox:hover {
+    background-color: #29a3ff;
+}
+
+#searchbox:focus + #searchbtn, #searchbox:hover + #searchbtn {
+    background-color: #29a3ff;
+}
+  
+#searchbtn {
+    position: absolute;
+    width: 50px; /* change this for iphone 5 */
+    padding: 0;
+    text-align: center;
+}
+
+#searchbtn:hover, #searchbtn:focus {
+    color: #006fc2;
+}
+
+#searchbtn:active {
+    color: #00355c;
+}
+
+input[type=search] {
+    box-sizing: border-box;
+    border-radius: 0;
+}
+
+input[type="search"]::placeholder {
+    color: white;
+    font-weight: 100;
+}
+
+.hero-img {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-descrip {
+    position: absolute;
+    left: 50%;
+    bottom: 10px;
+    transform: translate(-50%, -50%);
+    margin: 0 auto;
+    color: black;
+    text-align: center;
+}
+
+/* Medium and smaller devices */
+@media all and (max-width:800px) {
+
+  input[type="search"] {
+    font-size: 12px;
+  }
+
+  .cover {
+    padding: 20px;
+  }
+}
+
+/* Extra small device  */
+@media all and (max-width:375px) {
+    .footer-descrip {
+        font-size: 12px;
+    }
+
+    #searchbtn {
+        position: absolute;
+        width: 25px; 
+        padding: 0;
+        text-align: center;
+    }
+
+    .title {
+        font-size: 30px;
+        font-weight: 500;
+        color: black;
+        text-align: center;
+        position: relative;
+        bottom: 70px;
+    }
+}
+
+

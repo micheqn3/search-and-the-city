@@ -1,0 +1,9 @@
+/**** Global styles ****/
+
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
+
+* {
+  box-sizing: inherit;
+  box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
+}
