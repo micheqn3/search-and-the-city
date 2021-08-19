@@ -1,5 +1,6 @@
 /**** Weather styles  ****/
 
-#my-uppercase {
-    text-transform: capitalize
+.my-uppercase {
+    text-transform: capitalize;
+    color:  #2196F3;
 }
