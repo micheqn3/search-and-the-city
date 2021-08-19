@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getWeather } from '../../utils/API';
 import WeatherCard from './WeatherCard';
+import './weather.css';
 
 const Weather = ( {search} ) => {
 
@@ -40,7 +41,7 @@ const Weather = ( {search} ) => {
             <div className="container">
                 <div className="row">
                     <div className="col s12 center-align">
-                        <h3>{search}</h3>
+                        <h3 id="my-uppercase">{data.length ? search : ''}</h3>
                         <p className="flow-text">Start building out your itinerary today.</p>
                         <hr className="my-hr"></hr>
                     </div>
