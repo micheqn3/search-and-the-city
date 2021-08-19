@@ -18,10 +18,6 @@ nav ul a:hover {
     background-color: rgba(0, 0, 0, 0) !important;
 }
 
-.travlr {
-    font-size: 23px;
-}
-
 @media all and (max-width:800px) {
     #my-nav {
       flex-direction: column;

@@ -110,8 +110,38 @@ input[type="search"]::placeholder {
   }
 }
 
-/* Extra small device  */
+/* Small devices  */
 @media all and (max-width:375px) {
+    .footer-descrip {
+        font-size: 12px;
+        position: absolute;
+        left: 50%;
+        bottom: -50px;
+        transform: translate(-50%, -50%);
+        margin: 0 auto;
+        color: black;
+        text-align: center
+    }
+
+    #searchbtn {
+        position: absolute;
+        width: 25px; 
+        padding: 0;
+        text-align: center;
+    }
+
+    .title {
+        font-size: 30px;
+        font-weight: 500;
+        color: black;
+        text-align: center;
+        position: relative;
+        bottom: 70px;
+    }
+}
+
+/* Extra small devices  */
+@media all and (max-height:540px) {
     .footer-descrip {
         font-size: 12px;
     }
@@ -132,5 +162,3 @@ input[type="search"]::placeholder {
         bottom: 70px;
     }
 }
-
-
