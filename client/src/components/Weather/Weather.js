@@ -1,36 +1,51 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { getWeather } from '../../utils/API';
+import WeatherCard from './WeatherCard';
 
-const Weather = () => {
+const Weather = ( {search} ) => {
+
+    // Set initial state of weather data
+    const [data, setData] = useState([]);
+
+    // On component load, display all data
+    useEffect(() => {
+        displayAllWeather();
+    }, []);
+
+    // Retrieves 4 day weather from API and sets as state
+    const displayAllWeather = async () => {
+        try {
+            const response = await getWeather(search);
+            if (!response.ok) {
+                throw new Error("Couldn't retrieve weather data!");
+            }
+            // Filter API response to 4 day data at 6:00 and convert from unix time to regular time
+            const items = await response.json();
+
+            const fourDayData = await items.list.filter(weather => weather.dt_txt.includes("18:00:00")).slice(0, -1).map((item) => ({
+                date: new Date(item.dt * 1000).toLocaleString("en-US", {weekday: "long"}),
+                temp: item.main.temp,
+                image: item.weather[0].id,
+                description: item.weather[0].description,
+            }))
+            setData(fourDayData);
+            
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return (
         <section> 
-            <div class="container">
-                <div class="row">
-                    <div class="col s12 center-align">
-                        <h3>Your City</h3>
-                        <p class="flow-text">Start building out your itinerary today.</p>
-                        <hr class="my-hr"></hr>
+            <div className="container">
+                <div className="row">
+                    <div className="col s12 center-align">
+                        <h3>{search}</h3>
+                        <p className="flow-text">Start building out your itinerary today.</p>
+                        <hr className="my-hr"></hr>
                     </div>
-                    <div class="col s6 m3">
-                        <h5>Mon</h5>
-                        <p>img</p>
-                        <p>80 deg</p>       
-                    </div>
-                  
-                    <div class="col s6 m3">
-                        <h5>Tues</h5>
-                        <p>img</p>
-                        <p>80 deg</p>
-                    </div>
-                    <div class="col s6 m3">
-                        <h5>Wed</h5>
-                        <p>img</p>
-                        <p>80 deg</p>
-                    </div>
-                    <div class="col s6 m3">
-                        <h5>Thurs</h5>
-                        <p>img</p>
-                        <p>80 deg</p>
-                    </div>
+                    {data.length ? data.map((item, index) => <WeatherCard item={item} key={index} />) 
+                    : <h6 className="center-align">No weather results found.</h6>}
                 </div>
             </div>
         </section>
