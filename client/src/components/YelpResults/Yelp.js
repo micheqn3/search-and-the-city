@@ -10,6 +10,7 @@ const Yelp = ( {search} ) => {
     // Set up initial state that holds api results for restaurant and events
     const [searchedRest, setSearchedRest] = useState([]);
     const [searchedEvents, setSearchedEvents] = useState([]);
+    const [allItems, setAllItems] = useState([]);
 
 
     // Retrives restaurant and event data from yelp and saves to state
@@ -43,6 +44,7 @@ const Yelp = ( {search} ) => {
 
             setSearchedRest(newRestData);
             setSearchedEvents(newEventData);
+            setAllItems([...newRestData, ...newEventData]);
         } catch (error) {
             console.log(error);
         }
@@ -62,7 +64,7 @@ const Yelp = ( {search} ) => {
                             <div className="col s12">
                                 <h5 className="center-align my-col-title">Top Restaurants</h5>
                             </div>
-                            {searchedRest.length ? searchedRest.map((item, index) => <YelpCard item={item} key={index} />) 
+                            {searchedRest.length ? searchedRest.map((item, index) => <YelpCard item={item} key={index} allItems={allItems}/>) 
                             : <h6 className="center-align">No restaurant data found.</h6>}
                         </div>
                     </div>
@@ -72,7 +74,7 @@ const Yelp = ( {search} ) => {
                             <div className="col s12">
                                 <h5 className="center-align my-col-title">Things To Do</h5>
                             </div>
-                            {searchedEvents.length ? searchedEvents.map((item, index) => <YelpCard item={item} key={index} />) 
+                            {searchedEvents.length ? searchedEvents.map((item, index) => <YelpCard item={item} key={index} allItems={allItems}/>) 
                             : <h6 className="center-align">No event data found.</h6>}
                         </div>
                     </div>
