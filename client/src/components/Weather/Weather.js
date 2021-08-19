@@ -17,13 +17,9 @@ const Weather = ( {search} ) => {
     const displayAllWeather = async () => {
         try {
             const response = await getWeather(search);
-            if (!response.ok) {
-                throw new Error("Couldn't retrieve weather data!");
-            }
-            // Filter API response to 4 day data at 6:00 and convert from unix time to regular time
-            const items = await response.json();
 
-            const fourDayData = await items.list.filter(weather => weather.dt_txt.includes("18:00:00")).slice(0, -1).map((item) => ({
+            // Filter API response to 4 day data at 6:00 and convert from unix time to regular time
+            const fourDayData = await response.data.list.filter(weather => weather.dt_txt.includes("18:00:00")).slice(0, -1).map((item) => ({
                 date: new Date(item.dt * 1000).toLocaleString("en-US", {weekday: "long"}),
                 temp: item.main.temp,
                 image: item.weather[0].id,

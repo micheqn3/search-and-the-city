@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Weather from '../components/Weather/Weather';
+import Yelp from '../components/YelpResults/Yelp';
 import { Redirect } from 'react-router';
 
 const Results = ( {location} ) => {
@@ -12,10 +13,11 @@ const Results = ( {location} ) => {
     } 
 
     return (
-        <Weather search={location.state.search}/>
+        <>
+         <Weather search={location.state.search}/>
+         <Yelp search={location.state.search}/>
+        </>
     )
-
-
 }
 
 export default Results;
