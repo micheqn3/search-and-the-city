@@ -59,6 +59,33 @@ const resolvers = {
                 return itinerary;
             }
             throw new AuthenticationError('You need to be logged in!');
+        },
+
+        addSavedItems: async (parent, {yelpID, name, image, url, location, rating, categories, price, itinName }, context) => {
+            if (context.user) {
+                return await Itinerary.findOneAndUpdate(
+                    {name: itinName}, 
+                    {
+                        $addToSet: {
+                            savedItems: {
+                                yelpID: yelpID,
+                                name: name,
+                                image: image, 
+                                url: url,
+                                location: location, 
+                                rating: rating,
+                                categories: categories,
+                                price: price
+                            }
+                        }
+                    },
+                    {
+                        new: true,
+                        runValidators: true
+                    }
+                )
+            }
+            throw new AuthenticationError('You need to be logged in!');
         }
     }
 }

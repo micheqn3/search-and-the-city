@@ -33,3 +33,12 @@ mutation addItinerary($name: String!) {
     }
 }
 `
+
+export const ADD_SAVED_ITEM = gql`
+mutation addSavedItems($yelpID: String!, $name: String!, $image: String!, $url: String!, $location: String!, $rating: Float!, $categories: [String!], $price: String, $itinName: String!) {
+    addSavedItems(yelpID: $yelpID, name: $name, image: $image, url: $url, location: $location, rating: $rating, categories: $categories, price: $price, itinName: $itinName) {
+      _id, 
+      name
+    }
+  }
+`
