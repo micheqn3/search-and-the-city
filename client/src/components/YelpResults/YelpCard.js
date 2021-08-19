@@ -1,6 +1,6 @@
 // Yelp card to hold restaurant + event data 
 
-import React, { useCallback, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { useQuery, useMutation } from '@apollo/client';
 import { GET_MY_ITINERARIES } from '../../utils/queries';
@@ -73,20 +73,20 @@ const YelpCard = ( { item, allItems } ) => {
                     <p className="location">{item.location}</p>
 
                     {/* Trigger for drop down menu */}
-                    <a className='dropdown-trigger my-drop-btn' href='#' data-target={'dropdown1' + item.yelpID}><i className="material-icons my-heart-icon">favorite</i></a>
+                    <a className='dropdown-trigger my-drop-btn' href='#!' data-target={'dropdown1' + item.yelpID}><i className="material-icons my-heart-icon">favorite</i></a>
                     <ul id={'dropdown1' + item.yelpID} className='dropdown-content'>
-                        {Auth.loggedIn() ? (
-                        <>
-                            <li><i className="material-icons my-heart-icon">add</i><p className="center-align">Create New Itinerary</p></li>
-                            <li className="divider" tabIndex="-1"></li>
-                            <p className="center-align">
-                                {!userData.length ? 'You have no itineraries.' :  ''}
-                            </p>
-                            {userData.map((itin) => {
-                            return  <li key={itin._id} onClick={() => {handleSaveItem(item.yelpID, itin.name)}}><p className="black-text center-align">{itin.name}</p></li>
-                            })}
-                        </>) 
-                        : <p>Please log in to save this.<i className="material-icons my-heart-icon">favorite</i></p>}
+                    {Auth.loggedIn() ? (
+                    <>
+                        <li><i className="material-icons my-heart-icon">add</i><p className="center-align">Create New Itinerary</p></li>
+                        <li className="divider" tabIndex="-1"></li>
+                        <p className="center-align">
+                            {!userData.length ? 'You have no itineraries.' :  ''}
+                        </p>
+                        {userData.map((itin) => {
+                        return  <li key={itin._id} onClick={() => {handleSaveItem(item.yelpID, itin.name)}}><p className="black-text center-align">{itin.name}</p></li>
+                        })}
+                    </>) 
+                    : <p>Please log in to save this.<i className="material-icons my-heart-icon">favorite</i></p>}
                     </ul>
                     </div>
                 </div>
