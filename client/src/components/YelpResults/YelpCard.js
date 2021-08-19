@@ -46,6 +46,7 @@ const YelpCard = ( { item, allItems } ) => {
                 }
             })
             console.log(data);
+            M.toast({html: 'Saved!'});
         } catch (error) {
             console.log(error);
         }
