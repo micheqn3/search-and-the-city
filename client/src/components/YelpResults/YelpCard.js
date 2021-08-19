@@ -14,7 +14,7 @@ const YelpCard = ( {item} ) => {
                 <div className="right-content">
                     <span className="card-title">{item.name}</span>
                     <div className="card-content my-card-text">
-                    <p>Italian, Desserts, Breakfast + Brunch
+                    <p>{item.categories.join(", ")}
                     </p>
                     </div>
                     <div className="card-action">
