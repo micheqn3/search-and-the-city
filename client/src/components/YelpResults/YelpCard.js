@@ -1,8 +1,19 @@
 // Yelp card to hold restaurant + event data 
 
-import React from 'react';
+import React, { useEffect } from 'react';
+import M from 'materialize-css/dist/js/materialize.min.js';
 
 const YelpCard = ( {item} ) => {
+
+    // Init all dropdowns
+    useEffect(() => {
+        M.AutoInit();
+      },[])
+
+    const handleClick = (yelpID, itin) => {
+    console.log(yelpID)
+    console.log(itin)
+    }
     
     return (
         <div className="col s12 my-card">
@@ -19,7 +30,16 @@ const YelpCard = ( {item} ) => {
                     </div>
                     <div className="card-action">
                     <a id="my-link" href={item.url}>Website</a>
+                    <a>{item.yelpID}</a>
                     <p className="location">{item.location}</p>
+
+                    <a className='dropdown-trigger my-drop-btn' href='#' data-target={'dropdown1' + item.yelpID}><i className="material-icons my-heart-icon">favorite</i></a>
+                    <ul id={'dropdown1' + item.yelpID} className='dropdown-content'>
+                        <li className="divider" tabIndex="-1"></li>
+                        <li onClick={() => {handleClick()}}><i className="material-icons my-heart-icon center-align">add</i></li>
+                        <li onClick={() => {handleClick(item.yelpID, 'palm springs')}}><p className="black-text center-align">Palm Springs {item.yelpID}</p></li>
+                    </ul>
+
                     </div>
                 </div>
             </div>

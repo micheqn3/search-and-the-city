@@ -9,7 +9,10 @@ const itinerarySchema = new Schema(
       required: true,
       unique: true
     },
-
+    userID: {
+      type: Schema.Types.ObjectId,
+      required: true
+    },
     savedItems: [ 
       {
         yelpID: {

@@ -37,12 +37,14 @@ type Auth {
 # Define query types 
 type Query {
     me: User
+    myItineraries: [Itinerary]
 }
 
 # Mutation types
 type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
+    addItinerary(name: String!): Itinerary
 }
 `
 

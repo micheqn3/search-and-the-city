@@ -24,3 +24,12 @@ mutation addUser($username: String!, $email: String!, $password: String!) {
     }
 }
 `
+
+export const ADD_ITINERARY = gql`
+mutation addItinerary($name: String!) {
+    addItinerary(name: $name) {
+    	_id, 
+    	name
+    }
+}
+`

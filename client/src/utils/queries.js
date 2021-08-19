@@ -22,3 +22,12 @@ query me {
     }
 }
 `
+
+export const GET_MY_ITINERARIES = gql`
+query myItineraries {
+    myItineraries {
+    	_id, 
+    	name
+    }
+}`
+
