@@ -6,7 +6,7 @@ import { useQuery, useMutation } from '@apollo/client';
 import { GET_MY_ITINERARIES } from '../../utils/queries';
 import { ADD_SAVED_ITEM } from '../../utils/mutations';
 import Auth from '../../utils/auth';
-import CreateModal from './CreateModal';
+import CreateModal from '../Modal/CreateModal';
 
 const YelpCard = ( { item, allItems } ) => {
 
