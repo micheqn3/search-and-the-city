@@ -53,7 +53,7 @@ const resolvers = {
                 })
                 
                 await User.findOneAndUpdate(
-                    {id: context.user._id}, 
+                    {_id: context.user._id}, 
                     {$addToSet: {itineraries: itinerary._id }}
                 )
                 return itinerary;
