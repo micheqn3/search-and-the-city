@@ -9,7 +9,7 @@ export const getWeather = (query) => {
 
 // Retrieves restaurant data or event data based on params
 export const getYelp = (search, tourism) => {
-    return axios.get(`${'https://cors-git.herokuapp.com/'}https://cors-git.herokuapp.com/https://api.yelp.com/v3/businesses/search`, {
+    return axios.get(`${process.env.REACT_APP_YELP_URL}`, {
         headers: {
             Authorization : `Bearer ${process.env.REACT_APP_YELP_API_KEY}`
         },
