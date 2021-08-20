@@ -6,6 +6,7 @@ import { useQuery, useMutation } from '@apollo/client';
 import { GET_MY_ITINERARIES } from '../../utils/queries';
 import { ADD_SAVED_ITEM } from '../../utils/mutations';
 import Auth from '../../utils/auth';
+import CreateModal from './CreateModal';
 
 const YelpCard = ( { item, allItems } ) => {
 
@@ -78,20 +79,21 @@ const YelpCard = ( { item, allItems } ) => {
                     <ul id={'dropdown1' + item.yelpID} className='dropdown-content'>
                     {Auth.loggedIn() ? (
                     <>
-                        <li><i className="material-icons my-heart-icon">add</i><p className="center-align">Create New Itinerary</p></li>
+                        <li><i className="material-icons my-heart-icon">add</i><a className="center-align modal-trigger black-text" href="#modal1">Create New Itinerary</a></li>
                         <li className="divider" tabIndex="-1"></li>
                         <p className="center-align">
-                            {!userData.length ? 'You have no itineraries.' :  ''}
+                            {!userData.length ? 'You have no itineraries.' : ''}
                         </p>
                         {userData.map((itin) => {
                         return  <li key={itin._id} onClick={() => {handleSaveItem(item.yelpID, itin.name)}}><p className="black-text center-align">{itin.name}</p></li>
                         })}
                     </>) 
-                    : <p>Please log in to save this.<i className="material-icons my-heart-icon">favorite</i></p>}
+                    : (<p>Please log in to save this.<i className="material-icons my-heart-icon">favorite</i></p>)}
                     </ul>
                     </div>
                 </div>
             </div>
+            <CreateModal/> {/* Modal for creating new itineraries */}
         </div>
     )
 }

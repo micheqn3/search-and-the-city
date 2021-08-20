@@ -12,7 +12,6 @@ const Yelp = ( {search} ) => {
     const [searchedEvents, setSearchedEvents] = useState([]);
     const [allItems, setAllItems] = useState([]);
 
-
     // Retrives restaurant and event data from yelp and saves to state
     const retrieveYelpData = async () => {
         try {
