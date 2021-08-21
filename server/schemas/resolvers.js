@@ -78,8 +78,26 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in!');
         },
 
+        // Removes saved item from itinerary
+        removeSavedItem: async (parent, {itinID, itemID}, context) => {
+            if (context.user) {
+                return Itinerary.findOneAndUpdate(
+                    {_id: itinID},
+                    {
+                        $pull: {
+                            savedItems: {
+                                yelpID: itemID
+                            }
+                        }
+                    },
+                    { new: true }
+                )
+            }
+            throw new AuthenticationError('You need to be logged in!');
+        },
+
         // Add saved restaurant/event to itinerary
-        addSavedItems: async (parent, {yelpID, name, image, url, location, rating, categories, price, itinName }, context) => {
+        addSavedItems: async (parent, {yelpID, name, image, url, location, rating, categories, price, itinName}, context) => {
             if (context.user) {
                 return await Itinerary.findOneAndUpdate(
                     {name: itinName}, 

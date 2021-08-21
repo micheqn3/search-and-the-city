@@ -46,6 +46,7 @@ type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     addItinerary(name: String!): Itinerary
     removeItinerary(ID: ID!): Itinerary
+    removeSavedItem(itinID: ID!, itemID: String!): Itinerary
     addSavedItems(yelpID: String!, name: String!, image: String!, url: String!, location: String!, rating: Float!, categories: [String!], price: String, itinName: String!): Itinerary
 }
 `
