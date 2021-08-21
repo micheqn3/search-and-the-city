@@ -83,7 +83,7 @@ const YelpCard = ( { item, allItems, savedIds, setSavedIds } ) => {
 
                     {/* Trigger for drop down menu */}
                     {/* If item is already saved, disable the button */}
-                    {Auth.loggedIn && savedIds?.some((savedID) => savedID === item.yelpID) ? (<a className='dropdown-trigger my-drop-btn no-click' href='#!' data-target={'dropdown1' + item.yelpID}><i className="material-icons my-gray-icon">favorite</i></a>) 
+                    {Auth.loggedIn() && savedIds?.some((savedID) => savedID === item.yelpID) ? (<a className='dropdown-trigger my-drop-btn no-click' href='#!' data-target={'dropdown1' + item.yelpID}><i className="material-icons my-gray-icon">favorite</i></a>) 
                     : (<a className='dropdown-trigger my-drop-btn' href='#!' data-target={'dropdown1' + item.yelpID}><i className="material-icons my-heart-icon">favorite</i></a>)}
                     <ul id={'dropdown1' + item.yelpID} className='dropdown-content'>
                     {Auth.loggedIn() ? (
