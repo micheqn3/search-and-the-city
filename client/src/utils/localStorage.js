@@ -17,4 +17,20 @@ export const saveIds = (arr) => {
   }
 };
 
+// Removes saved item ID
+export const removeSavedId = (id) => {
+  const savedIds = localStorage.getItem('saved_items')
+    ? JSON.parse(localStorage.getItem('saved_items'))
+    : null;
+
+  if (!savedIds) {
+    return false;
+  }
+
+  const updatedSavedIds = savedIds?.filter((savedID) => savedID !== id);
+  localStorage.setItem('saved_items', JSON.stringify(updatedSavedIds));
+
+  return true;
+};
+
 
