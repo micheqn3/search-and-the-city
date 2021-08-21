@@ -38,12 +38,14 @@ const resolvers = {
             const token = signToken(user);
             return { token, user };
         },
+
         // Add a user
         addUser: async (parent, {username, email, password}) => { 
             const user = await User.create({ username, email, password });
             const token = signToken(user);
             return { token, user };
         },
+
         // Add an itinerary
         addItinerary: async (parent, {name}, context) => {
             if (context.user) {
@@ -61,6 +63,22 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in!');
         },
 
+        // Removes itinerary and removes itinerary ID from the user
+        removeItinerary: async (parent, {ID}, context) => {
+            if (context.user) {
+                const itinerary = await Itinerary.findOneAndDelete({
+                    _id: ID
+                })
+                await User.findOneAndUpdate(
+                    {_id: context.user._id},
+                    {$pull: {itineraries: itinerary._id}}
+                )
+                return itinerary;
+            }
+            throw new AuthenticationError('You need to be logged in!');
+        },
+
+        // Add saved restaurant/event to itinerary
         addSavedItems: async (parent, {yelpID, name, image, url, location, rating, categories, price, itinName }, context) => {
             if (context.user) {
                 return await Itinerary.findOneAndUpdate(
