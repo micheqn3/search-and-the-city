@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { getYelp } from '../../utils/API';
 import './yelp.css';
 import YelpCard from './YelpCard';
+import { getSavedIds } from '../../utils/localStorage'; // test
 
 const Yelp = ( {search} ) => {
 
@@ -11,6 +12,9 @@ const Yelp = ( {search} ) => {
     const [searchedRest, setSearchedRest] = useState([]);
     const [searchedEvents, setSearchedEvents] = useState([]);
     const [allItems, setAllItems] = useState([]);
+
+    // Retrieves saved IDs from local storage
+    const [savedIds, setSavedIds] = useState(getSavedIds()); 
 
     // Retrives restaurant and event data from yelp and saves to state
     const retrieveYelpData = async () => {
@@ -63,7 +67,7 @@ const Yelp = ( {search} ) => {
                             <div className="col s12">
                                 <h5 className="center-align my-col-title">Top Restaurants</h5>
                             </div>
-                            {searchedRest.length ? searchedRest.map((item, index) => <YelpCard item={item} key={index} allItems={allItems}/>) 
+                            {searchedRest.length ? searchedRest.map((item, index) => <YelpCard item={item} key={index} allItems={allItems} savedIds={savedIds} setSavedIds={setSavedIds}/>) 
                             : <h6 className="center-align">No restaurant data found.</h6>}
                         </div>
                     </div>
@@ -73,7 +77,7 @@ const Yelp = ( {search} ) => {
                             <div className="col s12">
                                 <h5 className="center-align my-col-title">Things To Do</h5>
                             </div>
-                            {searchedEvents.length ? searchedEvents.map((item, index) => <YelpCard item={item} key={index} allItems={allItems}/>) 
+                            {searchedEvents.length ? searchedEvents.map((item, index) => <YelpCard item={item} key={index} allItems={allItems} savedIds={savedIds} setSavedIds={setSavedIds}/>) 
                             : <h6 className="center-align">No event data found.</h6>}
                         </div>
                     </div>

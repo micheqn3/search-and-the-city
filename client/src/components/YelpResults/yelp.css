@@ -115,6 +115,10 @@
     color: hotpink;
 }
 
+.my-gray-icon {
+    color: #dddddd;
+}
+
 .my-drop-btn {
     background-color: white;
     float: right;
@@ -122,4 +126,8 @@
 
 .dropdown-content {
     width: 250px!important;
+}
+
+.no-click {
+    pointer-events: none;
 }

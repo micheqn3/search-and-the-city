@@ -7,13 +7,19 @@ import { GET_MY_ITINERARIES } from '../../utils/queries';
 import { ADD_SAVED_ITEM } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 import CreateModal from '../Modal/CreateModal';
+import { saveIds } from '../../utils/localStorage';
 
-const YelpCard = ( { item, allItems } ) => {
+const YelpCard = ( { item, allItems, savedIds, setSavedIds } ) => {
 
     // Init all dropdowns
     useEffect(() => {
         M.AutoInit();
     })
+
+    // Saves `savedIds` list to localStorage 
+    useEffect(() => {
+        saveIds(savedIds);
+    });
 
     // Set up query to retrieve user's itineraries
     const { data, loading } = useQuery(GET_MY_ITINERARIES);
@@ -46,6 +52,7 @@ const YelpCard = ( { item, allItems } ) => {
                     itinName: itin
                 }
             })
+            setSavedIds([...savedIds, item.yelpID]);
             console.log(data);
             M.toast({html: 'Saved!'});
         } catch (error) {
@@ -75,7 +82,9 @@ const YelpCard = ( { item, allItems } ) => {
                     <p className="location">{item.location}</p>
 
                     {/* Trigger for drop down menu */}
-                    <a className='dropdown-trigger my-drop-btn' href='#!' data-target={'dropdown1' + item.yelpID}><i className="material-icons my-heart-icon">favorite</i></a>
+                    {/* If item is already saved, disable the button */}
+                    {Auth.loggedIn && savedIds?.some((savedID) => savedID === item.yelpID) ? (<a className='dropdown-trigger my-drop-btn no-click' href='#!' data-target={'dropdown1' + item.yelpID}><i className="material-icons my-gray-icon">favorite</i></a>) 
+                    : (<a className='dropdown-trigger my-drop-btn' href='#!' data-target={'dropdown1' + item.yelpID}><i className="material-icons my-heart-icon">favorite</i></a>)}
                     <ul id={'dropdown1' + item.yelpID} className='dropdown-content'>
                     {Auth.loggedIn() ? (
                     <>
@@ -84,16 +93,17 @@ const YelpCard = ( { item, allItems } ) => {
                         <p className="center-align">
                             {!userData.length ? 'You have no itineraries.' : ''}
                         </p>
+                        {/* Displays each of the user's itineraries. Clicking will save the target restaurant/event to itin that was clicked on */}
                         {userData.map((itin) => {
-                        return  <li key={itin._id} onClick={() => {handleSaveItem(item.yelpID, itin.name)}}><p className="black-text center-align">{itin.name}</p></li>
+                        return <li key={itin._id} onClick={() => {handleSaveItem(item.yelpID, itin.name)}}><p className="black-text center-align">{itin.name}</p></li>
                         })}
                     </>) 
                     : (<p>Please log in to save this.<i className="material-icons my-heart-icon">favorite</i></p>)}
                     </ul>
                     </div>
+                    <CreateModal/> {/* Modal for creating new itineraries */}
                 </div>
             </div>
-            <CreateModal/> {/* Modal for creating new itineraries */}
         </div>
     )
 }
