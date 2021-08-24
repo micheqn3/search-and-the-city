@@ -23,7 +23,12 @@ const Itineraries = () => {
     const userData = data?.myItineraries || {};
 
     // Set up mutation for removing itinerary 
-    const [removeItinerary] = useMutation(REMOVE_ITINERARY);
+    // Refetch updated data after mutation
+    const [removeItinerary] = useMutation(REMOVE_ITINERARY, {
+        refetchQueries: [
+            {query: GET_MY_ITINERARIES}
+        ]
+    });
 
     // Handles deleting itinerary from DB
     const handleDeleteItin = async (ID) => {
@@ -43,7 +48,6 @@ const Itineraries = () => {
             })
             console.log(data);
             M.toast({html: 'Deleted itinerary!'});
-            setTimeout(() => {window.location.reload()}, 1000);
         } catch (error) {
             console.log(error);
         }
