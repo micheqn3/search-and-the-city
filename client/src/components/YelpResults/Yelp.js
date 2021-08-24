@@ -4,7 +4,11 @@ import React, { useEffect, useState } from 'react';
 import { getYelp } from '../../utils/API';
 import './yelp.css';
 import YelpCard from './YelpCard';
-import { getSavedIds } from '../../utils/localStorage'; // test
+import { getSavedIds } from '../../utils/localStorage'; 
+import { ADD_SAVED_ITEM } from '../../utils/mutations';
+import M from 'materialize-css/dist/js/materialize.min.js';
+import { useMutation } from '@apollo/client';
+import Auth from '../../utils/auth';
 
 const Yelp = ( {search} ) => {
 
@@ -13,8 +17,16 @@ const Yelp = ( {search} ) => {
     const [searchedEvents, setSearchedEvents] = useState([]);
     const [allItems, setAllItems] = useState([]);
 
+    // Set up mutation to add restaurant/event
+    const [addItem] = useMutation(ADD_SAVED_ITEM);
+
     // Retrieves saved IDs from local storage
     const [savedIds, setSavedIds] = useState(getSavedIds()); 
+
+    // On component load, start api call based on user search and set state of items
+    useEffect(() => {
+        retrieveYelpData()
+    },[])
 
     // Retrives restaurant and event data from yelp and saves to state
     const retrieveYelpData = async () => {
@@ -53,9 +65,37 @@ const Yelp = ( {search} ) => {
         }
     }
 
-    useEffect(() => {
-       retrieveYelpData()
-    },[])
+    // Saves restaurant/event data to user's choice of itinerary
+    const handleSaveItem = async (yelpID, itin) => {
+        const item = allItems.find((item => item.yelpID === yelpID));
+        
+        // Checks for user authentication
+        const token = Auth.loggedIn() ? Auth.getToken() : null;
+        if (!token) {
+            return false;
+        }
+
+        try {
+            const { data } = await addItem({
+                variables: {
+                    yelpID: item.yelpID,
+                    name: item.name,
+                    image: item.image,
+                    url: item.url,
+                    location: item.location,
+                    rating: item.rating,
+                    categories: item.categories,
+                    price: item.price,
+                    itinName: itin
+                }
+            })
+            setSavedIds([...savedIds, item.yelpID]);
+            console.log(data);
+            M.toast({html: 'Saved!'});
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     return (
         <section>
@@ -67,7 +107,7 @@ const Yelp = ( {search} ) => {
                             <div className="col s12">
                                 <h5 className="center-align my-col-title">Top Restaurants</h5>
                             </div>
-                            {searchedRest.length ? searchedRest.map((item, index) => <YelpCard item={item} key={index} allItems={allItems} savedIds={savedIds} setSavedIds={setSavedIds}/>) 
+                            {searchedRest.length ? searchedRest.map((item, index) => <YelpCard item={item} key={index} savedIds={savedIds} handleSaveItem={handleSaveItem}/>) 
                             : <h6 className="center-align">No restaurant data found.</h6>}
                         </div>
                     </div>
@@ -77,7 +117,7 @@ const Yelp = ( {search} ) => {
                             <div className="col s12">
                                 <h5 className="center-align my-col-title">Things To Do</h5>
                             </div>
-                            {searchedEvents.length ? searchedEvents.map((item, index) => <YelpCard item={item} key={index} allItems={allItems} savedIds={savedIds} setSavedIds={setSavedIds}/>) 
+                            {searchedEvents.length ? searchedEvents.map((item, index) => <YelpCard item={item} key={index} savedIds={savedIds} handleSaveItem={handleSaveItem}/>) 
                             : <h6 className="center-align">No event data found.</h6>}
                         </div>
                     </div>

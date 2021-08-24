@@ -2,14 +2,13 @@
 
 import React, { useEffect } from 'react';
 import M from 'materialize-css/dist/js/materialize.min.js';
-import { useQuery, useMutation } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import { GET_MY_ITINERARIES } from '../../utils/queries';
-import { ADD_SAVED_ITEM } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 import CreateModal from '../Modal/CreateModal';
 import { saveIds } from '../../utils/localStorage';
 
-const YelpCard = ( { item, allItems, savedIds, setSavedIds } ) => {
+const YelpCard = ( { item, savedIds, handleSaveItem } ) => {
 
     // Init all dropdowns
     useEffect(() => {
@@ -24,41 +23,6 @@ const YelpCard = ( { item, allItems, savedIds, setSavedIds } ) => {
     // Set up query to retrieve user's itineraries
     const { data, loading } = useQuery(GET_MY_ITINERARIES);
     const userData = data?.myItineraries || {};
-
-    // Set up mutation to add restaurant/event
-    const [addItem] = useMutation(ADD_SAVED_ITEM);
-
-    // Saves restaurant/event data to user's choice of itinerary
-    const handleSaveItem = async (yelpID, itin) => {
-        const item = allItems.find((item => item.yelpID === yelpID));
-        
-        // Checks for user authentication
-        const token = Auth.loggedIn() ? Auth.getToken() : null;
-        if (!token) {
-            return false;
-        }
-
-        try {
-            const { data } = await addItem({
-                variables: {
-                    yelpID: item.yelpID,
-                    name: item.name,
-                    image: item.image,
-                    url: item.url,
-                    location: item.location,
-                    rating: item.rating,
-                    categories: item.categories,
-                    price: item.price,
-                    itinName: itin
-                }
-            })
-            setSavedIds([...savedIds, item.yelpID]);
-            console.log(data);
-            M.toast({html: 'Saved!'});
-        } catch (error) {
-            console.log(error);
-        }
-    }
 
     if (loading) {
         return <h6>LOADING...</h6>;
