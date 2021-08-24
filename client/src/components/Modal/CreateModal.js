@@ -5,6 +5,7 @@ import { ADD_ITINERARY } from '../../utils/mutations';
 import { useMutation } from '@apollo/client';
 import Auth from '../../utils/auth';
 import M from 'materialize-css/dist/js/materialize.min.js';
+import './createModal.css';
 
 const CreateModal = () => {
 
@@ -53,7 +54,7 @@ const CreateModal = () => {
                     <input 
                     placeholder="Name" 
                     type="text" 
-                    className="validate center-align"
+                    className="center-align"
                     onChange={handleInputChange}
                     value={formData}
                     />

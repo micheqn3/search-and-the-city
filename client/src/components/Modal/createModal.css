@@ -1,0 +1,6 @@
+/**** Styles for modal component ****/
+
+.input-field input:focus {
+    border-bottom: 1px solid #29a3ff !important;
+    box-shadow: 0 0.5px 0 0 #29a3ff !important;
+}
