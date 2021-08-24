@@ -22,13 +22,13 @@
     margin-bottom: 20px;
 }
 
-.card-image {
+.card-image-yelp {
     float: left;
     width: 40%;
     height: 250px;
 }
 
-.card-image img {
+.card-image-yelp img {
     height: 100%;
 }
 
@@ -37,7 +37,7 @@
     float: left;
 }
 
-.card-title {
+.card-title-yelp {
     padding-left: 20px;
 }
 

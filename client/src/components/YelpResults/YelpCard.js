@@ -31,12 +31,12 @@ const YelpCard = ( { item, savedIds, handleSaveItem } ) => {
     return (
         <div className="col s12 my-card">
             <div className="card">
-                <div className="card-image">
+                <div className="card-image card-image-yelp">
                     <img src={item.image} alt="yelp restaurant/event"/>
                     <p className="my-tag">Rating: {item.rating}<br></br><em>{item.price ? `Price: ${item.price}` : ''}</em></p>
                 </div>
                 <div className="right-content">
-                    <span className="card-title">{item.name}</span>
+                    <span className="card-title-yelp">{item.name}</span>
                     <div className="card-content my-card-text">
                     <p>{item.categories.join(", ")}
                     </p>
