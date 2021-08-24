@@ -58,7 +58,7 @@ const CreateModal = () => {
                     onChange={handleInputChange}
                     value={formData}
                     />
-                    <a onClick={handleFormSubmit} className="waves-effect waves-light btn-flat"><i className="material-icons right">add</i>Add</a>
+                    <a href="#!" onClick={handleFormSubmit} className="waves-effect waves-light btn-flat"><i className="material-icons right">add</i>Add</a>
                     {errorMessage && (
                         <div>
                             <p className="red-text">{errorMessage}</p>

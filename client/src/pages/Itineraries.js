@@ -6,10 +6,10 @@ import { Redirect } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client';
 import { GET_MY_ITINERARIES } from '../utils/queries';
 import ItineraryCard from '../components/Itinerary/ItineraryCard';
-import './itineraries.css';
 import CreateModal from '../components/Modal/CreateModal';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { REMOVE_ITINERARY } from '../utils/mutations';
+import './css/itineraries.css';
 
 const Itineraries = () => {
 

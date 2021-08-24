@@ -1,11 +1,11 @@
 // Log in page 
 
 import React, { useState } from 'react';
-import './login-create.css';
 import { Link, Redirect } from 'react-router-dom';
 import { LOGIN_USER } from '../utils/mutations';
 import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
+import './css/login-create.css';
 
 const Login = () => {
 
