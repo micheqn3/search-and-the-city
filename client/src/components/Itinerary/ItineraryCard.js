@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-const ItineraryCard = ( {item} ) => {
+const ItineraryCard = ( {item, handleDeleteItin} ) => {
     return (
         <div className="col s12 m4 l4">
             <div className="card">
@@ -11,7 +11,7 @@ const ItineraryCard = ( {item} ) => {
                     <span className="card-title itin-card-title">{item.name}</span>
                 </div>
                 <div className="card-content">
-                    <a href="#!"><i className="material-icons my-delete-icon">delete</i></a>
+                    <a onClick={() => handleDeleteItin(item._id)} href="#!"><i className="material-icons my-delete-icon">delete</i></a>
                 </div>
             </div>
         </div>
