@@ -14,7 +14,7 @@ const Nav = () => {
                         <Link to="/" className="nav-tab travlr black-text"><i className="material-icons left">location_on</i>Home</Link>
                         {Auth.loggedIn() ? (
                             <>
-                            <li><a href="!#" className="nav-tab black-text">Itinerary</a></li>
+                            <Link to="/itineraries" className="nav-tab black-text"><li>Itinerary</li></Link>
                             <li><a onClick={Auth.logout} href="/" className="nav-tab black-text">Log Out</a></li>
                             </>
                         ) : (
