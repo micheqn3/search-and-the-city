@@ -31,3 +31,23 @@ query myItineraries {
     }
 }`
 
+export const GET_ONE_ITINERARY = gql`
+query getItinerary($ID: ID!) {
+    itinerary(ID: $ID) {
+    _id,
+    name,
+    savedItems {
+      _id,
+      yelpID,
+      name,
+      image,
+      url,
+      location,
+      rating,
+      categories,
+      price
+    	}
+    }
+  }
+`
+

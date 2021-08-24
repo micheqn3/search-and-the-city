@@ -38,6 +38,7 @@ type Auth {
 type Query {
     me: User
     myItineraries: [Itinerary]
+    itinerary(ID: ID!): Itinerary
 }
 
 # Mutation types
