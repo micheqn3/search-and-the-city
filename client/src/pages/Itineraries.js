@@ -42,7 +42,7 @@ const Itineraries = () => {
                     </div>
                 </div>
                 {userData.length ? userData.map((item, index) => <ItineraryCard item={item} key={index} />)
-                : <h5 className="center-align">You don't have any itineraries.</h5>}
+                : <div className="container"><h5 className="center-align">You don't have any itineraries.</h5></div>}
             </div>
             <CreateModal/> {/* Modal for creating new itineraries */}
         </section>
