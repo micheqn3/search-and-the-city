@@ -55,7 +55,7 @@ const App = () => {
             <Route exact path="/createaccount" component={CreateAccount}/>
             <Route exact path="/results" component={Results}/>
             <Route exact path="/itineraries" component={Itineraries}/>
-            <Route exact path="/itinerary/:id" component={Itinerary}/>
+            <Route exact path="/itinerary/:ID" component={Itinerary}/>
             <Route render={() => <div className="container"><h1 className='center-align'>404 Error: This page does not exist.</h1></div>} />
           </Switch>
         </div>

@@ -25,7 +25,7 @@ const resolvers = {
         // Retrieves one itinerary
         itinerary: async (parent, {ID}, context) => {
             if (context.user) {
-                return Itinerary.findOne({_id: ID});
+                return await Itinerary.findOne({_id: ID});
             }
             throw new AuthenticationError('You need to be logged in!');
         }
