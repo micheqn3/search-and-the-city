@@ -9,6 +9,7 @@ import ItineraryCard from '../components/Itinerary/ItineraryCard';
 import CreateModal from '../components/Modal/CreateModal';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { REMOVE_ITINERARY } from '../utils/mutations';
+import { removeSavedId } from '../utils/localStorage';
 import './css/itineraries.css';
 
 const Itineraries = () => {
@@ -20,7 +21,9 @@ const Itineraries = () => {
 
     // Set up query to retrieve user's itineraries
     const { data, loading } = useQuery(GET_MY_ITINERARIES);
-    const userData = data?.myItineraries || {};
+    const userData = data?.myItineraries || {}
+
+    console.log(userData)
 
     // Set up mutation for removing itinerary 
     // Refetch updated data after mutation
@@ -46,7 +49,12 @@ const Itineraries = () => {
                     ID: ID
                 }
             })
-            console.log(data);
+            // Saves all item IDs from the deleted itinerary and removes them from local storage
+            const deletedIDs = [];
+            data.removeItinerary.savedItems.forEach((item) => {
+                deletedIDs.push(item.yelpID);
+            })
+            removeSavedId(deletedIDs);
             M.toast({html: 'Deleted itinerary!'});
         } catch (error) {
             console.log(error);

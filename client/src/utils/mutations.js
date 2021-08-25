@@ -38,7 +38,10 @@ export const REMOVE_ITINERARY = gql`
 mutation removeItinerary($ID: ID!) {
     removeItinerary(ID: $ID) {
       _id, 
-      name
+      name,
+      savedItems {
+        yelpID
+      }
     }
   }
 `
