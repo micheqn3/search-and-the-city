@@ -1,7 +1,7 @@
 // Displays all saved items in one itinerary
 
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Redirect } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client';
 import { GET_ONE_ITINERARY } from '../utils/queries';
 import { REMOVE_SAVED_ITEM } from '../utils/mutations';
@@ -28,6 +28,13 @@ const Itinerary = () => {
     });    
 
     const itinData = data?.itinerary.savedItems || {};
+
+    // Checks if the itinerary belongs to the logged in user. If not, redirect the screen
+    if (data) {
+        if (!Auth.loggedIn() || Auth.getProfile().data._id !== data.itinerary.userID) {
+            return <Redirect to="/" />;
+        }
+    }
 
     // Handles removing saved item from itinerary and local storage
     const handleRemoveItem = async (itemID) => {
@@ -70,7 +77,8 @@ const Itinerary = () => {
                                 <h5 className="center-align my-col-title">My Itinerary</h5>
                             </div>
                             <p className="center-align"> {/* If there are no saved items */}
-                                {!itinData.length ? 'You have no saved items in this itinerary.' : ''}
+                                {!itinData.length ? 'You have no saved items in this itinerary.' 
+                                : ('')}
                             </p>
                             {/* Maps through the saved items in the itinerary */}
                             {itinData.map((item, index) => {

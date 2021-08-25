@@ -36,6 +36,7 @@ query getItinerary($ID: ID!) {
     itinerary(ID: $ID) {
     _id,
     name,
+    userID,
     savedItems {
       _id,
       yelpID,

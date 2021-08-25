@@ -14,6 +14,7 @@ type User {
 type Itinerary {
     _id: ID
     name: String!
+    userID: ID
     savedItems: [SavedItem]!
 }
 
