@@ -23,8 +23,6 @@ const Itineraries = () => {
     const { data, loading } = useQuery(GET_MY_ITINERARIES);
     const userData = data?.myItineraries || {}
 
-    console.log(userData)
-
     // Set up mutation for removing itinerary 
     // Refetch updated data after mutation
     const [removeItinerary] = useMutation(REMOVE_ITINERARY, {
