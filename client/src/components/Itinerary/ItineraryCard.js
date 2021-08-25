@@ -12,7 +12,7 @@ const ItineraryCard = ( {item, handleDeleteItin} ) => {
                     <span className="card-title itin-card-title">{item.name}</span>
                 </div>
                 <div className="card-content">
-                    <i onClick={() => handleDeleteItin(item._id)} className="material-icons my-delete-icon clickable">delete</i>
+                    <i onClick={() => handleDeleteItin(item._id)} className="material-icons my-drop-btn my-heart-icon clickable">delete</i>
                 </div>
             </div>
         </div>

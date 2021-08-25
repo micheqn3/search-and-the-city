@@ -28,6 +28,7 @@ const Itinerary = () => {
     });    
 
     const itinData = data?.itinerary.savedItems || {};
+    const itinName = data?.itinerary.name || {};
 
     // Checks if the itinerary belongs to the logged in user. If not, redirect the screen
     if (data) {
@@ -74,7 +75,7 @@ const Itinerary = () => {
                     <div className="col s12 m6 offset-m3"> 
                         <div className="row"> 
                             <div className="col s12">
-                                <h5 className="center-align my-col-title">My Itinerary</h5>
+                                <h5 className="center-align my-col-title">{`My Itinerary : ${itinName}`}</h5>
                             </div>
                             <p className="center-align"> {/* If there are no saved items */}
                                 {!itinData.length ? 'You have no saved items in this itinerary.' 
