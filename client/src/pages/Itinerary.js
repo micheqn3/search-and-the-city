@@ -18,7 +18,8 @@ const Itinerary = () => {
     // Set up mutation for removing saved item
     const [removeSavedItem] = useMutation(REMOVE_SAVED_ITEM, {
         refetchQueries: [
-            {query: GET_ONE_ITINERARY}
+            {query: GET_ONE_ITINERARY,
+            variables: {ID: userParam}}
         ]
     });
 
