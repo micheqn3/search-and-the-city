@@ -8,17 +8,17 @@ export const getWeather = (query) => {
 }
 
 // Retrieves restaurant data or event data based on params
-export const getYelp = (search, tourism) => {
+export const getYelp = (search, category, filter) => {
     return axios.get(`${process.env.REACT_APP_YELP_URL}`, {
         headers: {
             Authorization : `Bearer ${process.env.REACT_APP_YELP_API_KEY}`
         },
         params: {
             location: search,
-            categories: tourism ? '' : 'restaurants',
-            sort_by: 'review_count',
+            categories: category === 'event' ? '' : 'restaurants',
+            sort_by: filter ? filter : 'review_count',
             limit: 6,
-            term: tourism ? tourism : ''
+            term: category === 'event' ? 'tourism' : ''
         }
     });
 }

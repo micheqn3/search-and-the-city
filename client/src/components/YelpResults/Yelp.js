@@ -34,7 +34,7 @@ const Yelp = ( {search} ) => {
         try {
             const [initialRest, initialEvent] = await Promise.all([
                 getYelp(search),
-                getYelp(search, 'tourist')
+                getYelp(search, 'event')
             ])
 
             const newRestData = initialRest.data.businesses.map((item) => ({
@@ -64,6 +64,37 @@ const Yelp = ( {search} ) => {
             setLoading(false);
         } catch (error) {
             console.log(error);
+        }
+    }
+
+    // Filters API data based on best match and rating tags
+    // Saves filtered results to state
+    const filterData = async (category, filter) => {
+        if (category === 'rest') {
+            try {
+                const filterRest = await getYelp(search, category, filter);
+                const newRestData = filterRest.data.businesses.map((item) => ({
+                    yelpID: item.id,
+                    name: item.name,
+                    image: item.image_url,
+                    url: item.url,
+                    location: item.location.address1,
+                    rating: item.rating,
+                    categories: item.categories.map(item => item.title),
+                    price: item.price,
+                }));
+                setSearchedRest(newRestData);
+                setAllItems([...newRestData, ...searchedEvents]);
+            } catch (error) {
+                console.log(error);
+            }
+        } else if (category === 'event') {
+            try {
+                console.log('event')
+
+            } catch (error) {
+                console.log(error);
+            }
         }
     }
 
@@ -122,8 +153,16 @@ const Yelp = ( {search} ) => {
                 { /* Left column */}
                     <div className="col s12 m6">
                         <div className="row">
-                            <div className="col s12">
-                                <h5 className="center-align my-col-title">Top Restaurants</h5>
+                            <div className="col s12 center-align">
+                                <h5 className="my-col-title">Top Restaurants</h5>
+                                <div onClick={() => filterData('rest', 'best_match')} className="chip clickable">
+                                    Best Match
+                                    <i className="material-icons tiny">add</i>
+                                </div>
+                                <div onClick={() => filterData('rest', 'rating')} className="chip clickable">
+                                    Rating
+                                    <i className="material-icons tiny">add</i>
+                                </div>
                             </div>
                             {searchedRest.length ? searchedRest.map((item, index) => <YelpCard item={item} key={index} savedIds={savedIds} handleSaveItem={handleSaveItem}/>) 
                             : <h6 className="center-align">No restaurant data found.</h6>}
@@ -132,8 +171,16 @@ const Yelp = ( {search} ) => {
                     { /* Right column */}
                     <div className="col s12 m6">
                         <div className="row">
-                            <div className="col s12">
-                                <h5 className="center-align my-col-title">Things To Do</h5>
+                            <div className="col s12 center-align">
+                                <h5 className="my-col-title">Things To Do</h5>
+                                <div onClick={() => filterData('event', 'best_match')} className="chip clickable">
+                                    Best Match
+                                    <i className="material-icons tiny">add</i>
+                                </div>
+                                <div onClick={() => filterData('event', 'rating')} className="chip clickable">
+                                    Rating
+                                    <i className="material-icons tiny">add</i>
+                                </div>
                             </div>
                             {searchedEvents.length ? searchedEvents.map((item, index) => <YelpCard item={item} key={index} savedIds={savedIds} handleSaveItem={handleSaveItem}/>) 
                             : <h6 className="center-align">No event data found.</h6>}
