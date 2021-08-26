@@ -30,7 +30,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.get("/service-worker.js", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "src", "serviceWorker.js"));
+  res.sendFile(path.resolve(__dirname, "src", "service-worker.js"));
 });
 
 // Set up a wildcard route on our server that will serve the front end whenever a request for a non-API route is received
