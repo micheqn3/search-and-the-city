@@ -89,7 +89,7 @@ const Itinerary = () => {
                                         <div className="card">
                                             <div className="card-image card-image-yelp">
                                                 <img alt="Restaurant yelp" src={item.image}></img>
-                                                <p className="my-tag">Rating<br></br><em>{item.price ? `Price: ${item.price}` : ''}</em></p>
+                                                <p className="my-tag">Rating : {item.rating}<br></br><em>{item.price ? `Price: ${item.price}` : ''}</em></p>
                                             </div>
                                             <div className="right-content">
                                                 <span className="card-title-yelp">{item.name}</span>
