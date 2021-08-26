@@ -187,8 +187,7 @@ const Yelp = ( {search} ) => {
                 </div>
             </div>
         </div>
-        ) : 
-        (<section> {/* Map through api data and siplay searched restaurants + events and pass in savedIds and handleSaveItem function */}
+        ) : (<section> {/* Map through api data and siplay searched restaurants + events and pass in savedIds and handleSaveItem function */}
             <div className="my-result-container">
                 <div className="row">
                 { /* Left column */}
