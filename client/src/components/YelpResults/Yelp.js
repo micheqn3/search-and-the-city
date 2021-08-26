@@ -16,6 +16,7 @@ const Yelp = ( {search} ) => {
     const [searchedRest, setSearchedRest] = useState([]);
     const [searchedEvents, setSearchedEvents] = useState([]);
     const [allItems, setAllItems] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     // Set up mutation to add restaurant/event
     const [addItem] = useMutation(ADD_SAVED_ITEM);
@@ -60,6 +61,7 @@ const Yelp = ( {search} ) => {
             setSearchedRest(newRestData);
             setSearchedEvents(newEventData);
             setAllItems([...newRestData, ...newEventData]);
+            setLoading(false);
         } catch (error) {
             console.log(error);
         }
@@ -98,7 +100,23 @@ const Yelp = ( {search} ) => {
     }
 
     return (
-        <section>
+        <> {/* Display preloader if still waiting for api data*/}
+        {loading ? 
+        (<div className="container center-align">
+            <div class="preloader-wrapper big active">
+                <div class="spinner-layer spinner-blue-only">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div><div class="gap-patch">
+                        <div class="circle"></div>
+                    </div><div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        ) : 
+        (<section> {/* Map through api data and siplay searched restaurants + events and pass in savedIds and handleSaveItem function */}
             <div className="my-result-container">
                 <div className="row">
                 { /* Left column */}
@@ -123,7 +141,8 @@ const Yelp = ( {search} ) => {
                     </div>
                 </div>
             </div>
-        </section> 
+        </section> )}
+        </>
     )
 }
 
