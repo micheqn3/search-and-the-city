@@ -18,6 +18,12 @@ const Yelp = ( {search} ) => {
     const [allItems, setAllItems] = useState([]);
     const [loading, setLoading] = useState(true);
 
+    // Set up state for filter tags and active-tag class set to false
+    const [toggleBestRest, setToggleBestRest] = useState(false);
+    const [toggleRatingRest, setToggleRatingRest] = useState(false);
+    const [toggleBestEvent, setToggleBestEvent] = useState(false);
+    const [toggleRatingEvent, setToggleRatingEvent] = useState(false);
+
     // Set up mutation to add restaurant/event
     const [addItem] = useMutation(ADD_SAVED_ITEM);
 
@@ -141,6 +147,30 @@ const Yelp = ( {search} ) => {
         }
     }
 
+    // Handles active filter toggle
+    const handleToggleTag = (toggle) => {
+        switch (toggle) {
+            case 'toggleBestRest':
+                setToggleBestRest(true);
+                setToggleRatingRest(false);
+                break;
+            case 'toggleRatingRest':
+                setToggleBestRest(false);
+                setToggleRatingRest(true);
+                break;
+            case 'toggleBestEvent': 
+                setToggleBestEvent(true);
+                setToggleRatingEvent(false);
+                break;
+            case 'toggleRatingEvent': 
+                setToggleBestEvent(false);
+                setToggleRatingEvent(true);
+                break;
+            default: 
+                console.log('Error with toggle.');
+        }
+    }
+
     return (
         <> {/* Display preloader if still waiting for api data */}
         {loading ? 
@@ -166,11 +196,11 @@ const Yelp = ( {search} ) => {
                         <div className="row">
                             <div className="col s12 center-align">
                                 <h5 className="my-col-title">Top Restaurants</h5>
-                                <div onClick={() => filterData('rest', 'best_match')} className="chip clickable">
+                                <div onClick={() => {filterData('rest', 'best_match'); handleToggleTag('toggleBestRest')}} className={toggleBestRest ? 'chip clickable active-tag' : 'chip clickable'}>
                                     Best Match
                                     <i className="material-icons tiny">add</i>
                                 </div>
-                                <div onClick={() => filterData('rest', 'rating')} className="chip clickable">
+                                <div onClick={() => {filterData('rest', 'rating'); handleToggleTag('toggleRatingRest')}} className={toggleRatingRest ? 'chip clickable active-tag' : 'chip clickable'}>
                                     Rating
                                     <i className="material-icons tiny">add</i>
                                 </div>
@@ -184,11 +214,11 @@ const Yelp = ( {search} ) => {
                         <div className="row">
                             <div className="col s12 center-align">
                                 <h5 className="my-col-title">Things To Do</h5>
-                                <div onClick={() => filterData('event', 'best_match')} className="chip clickable">
+                                <div onClick={() => {filterData('event', 'best_match'); handleToggleTag('toggleBestEvent') }} className={toggleBestEvent ? 'chip clickable active-tag' : 'chip clickable'}>
                                     Best Match
                                     <i className="material-icons tiny">add</i>
                                 </div>
-                                <div onClick={() => filterData('event', 'rating')} className="chip clickable">
+                                <div onClick={() => {filterData('event', 'rating'); handleToggleTag('toggleRatingEvent')}} className={toggleRatingEvent ? 'chip clickable active-tag' : 'chip clickable'}>
                                     Rating
                                     <i className="material-icons tiny">add</i>
                                 </div>

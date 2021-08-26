@@ -18,7 +18,7 @@ export const getYelp = (search, category, filter) => {
             categories: category === 'event' ? '' : 'restaurants',
             sort_by: filter ? filter : 'review_count',
             limit: 6,
-            term: category === 'event' ? 'tourism' : ''
+            term: category === 'event' ? 'tourist' : ''
         }
     });
 }

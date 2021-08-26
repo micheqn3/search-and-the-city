@@ -84,6 +84,11 @@
     padding-right: 8px;
 }
 
+.active-tag {
+    background-color: #aaa;
+    color: white;
+}
+
 #my-link {
     color: #2196F3;
 }
