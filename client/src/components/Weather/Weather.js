@@ -1,3 +1,5 @@
+// Weather container
+
 import React, { useState, useEffect } from 'react';
 import { getWeather } from '../../utils/API';
 import WeatherCard from './WeatherCard';
