@@ -100,7 +100,7 @@ const Yelp = ( {search} ) => {
     }
 
     return (
-        <> {/* Display preloader if still waiting for api data*/}
+        <> {/* Display preloader if still waiting for api data */}
         {loading ? 
         (<div className="container center-align">
             <div class="preloader-wrapper big active">
