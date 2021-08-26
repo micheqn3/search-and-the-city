@@ -99,7 +99,7 @@ const Itinerary = () => {
                                                 </div>
                                                 <div className="card-action">
                                                     <a id="my-link" href={item.url}>Website</a>
-                                                    <p className="location">{item.location}</p>
+                                                    <p className="location"><i className="material-icons tiny my-location-icon">location_on</i>{item.location}</p>
                                                     <i onClick={() => handleRemoveItem(item.yelpID)} className="material-icons my-heart-icon my-drop-btn clickable">delete</i>
                                                 </div>
                                             </div>
