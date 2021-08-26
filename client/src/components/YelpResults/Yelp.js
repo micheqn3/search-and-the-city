@@ -90,8 +90,19 @@ const Yelp = ( {search} ) => {
             }
         } else if (category === 'event') {
             try {
-                console.log('event')
-
+                const filterEvent = await getYelp(search, category, filter);
+                const newEventData = filterEvent.data.businesses.map((item) => ({
+                    yelpID: item.id,
+                    name: item.name,
+                    image: item.image_url,
+                    url: item.url,
+                    location: item.location.address1,
+                    rating: item.rating,
+                    categories: item.categories.map(item => item.title),
+                    price: item.price,
+                }));
+                setSearchedEvents(newEventData);
+                setAllItems([...newEventData, ...searchedRest]);
             } catch (error) {
                 console.log(error);
             }
