@@ -43,7 +43,7 @@ const YelpCard = ( { item, savedIds, handleSaveItem } ) => {
                     </div>
                     <div className="card-action">
                     <a id="my-link" href={item.url}>Website</a>
-                    <p className="location">{item.location}</p>
+                    <p className="location"><i className="material-icons tiny my-location-icon">location_on</i>{item.location}</p>
 
                     {/* Trigger for drop down menu */}
                     {/* If item is already saved, disable the button */}
