@@ -48,9 +48,12 @@ const YelpCard = ( { item, savedIds, handleSaveItem } ) => {
                     {/* Trigger for drop down menu */}
                     {/* If item is already saved, disable the button */}
                     {Auth.loggedIn() && savedIds?.some((savedID) => savedID === item.yelpID) 
-                    ? (<a className='dropdown-trigger my-drop-btn no-click' href='#!' data-target={'dropdown1' + item.yelpID}><i className="material-icons my-gray-icon">favorite</i></a>) 
-                    : (<a className='dropdown-trigger my-drop-btn' href='#!' data-target={'dropdown1' + item.yelpID}><i className="material-icons my-heart-icon">favorite</i></a>)}
+                    ? (<a className='dropdown-trigger my-drop-btn no-click' href='#!' data-target={'dropdown1' + item.yelpID}><i className="material-icons my-gray-icon">favorite</i></a>
+                    ) : (<a className='dropdown-trigger my-drop-btn' href='#!' data-target={'dropdown1' + item.yelpID}><i className="material-icons my-heart-icon">favorite</i></a>)}
                     <ul id={'dropdown1' + item.yelpID} className='dropdown-content'>
+
+
+                    {/* If logged in, display user itineraries. If not, display message to log in */ }
                     {Auth.loggedIn() 
                     ? (
                     <>
@@ -63,8 +66,8 @@ const YelpCard = ( { item, savedIds, handleSaveItem } ) => {
                         {userData.map((itin) => {
                         return <li key={itin._id} onClick={() => {handleSaveItem(item.yelpID, itin.name)}}><p className="black-text center-align">{itin.name}</p></li>
                         })}
-                    </>) 
-                    : (<p>Please log in to save this.<i className="material-icons my-heart-icon">favorite</i></p>)}
+                    </>
+                    ) : (<p>Please log in to save this.<i className="material-icons my-heart-icon">favorite</i></p>)}
                     </ul>
                     </div>
                     <CreateModal/> {/* Modal for creating new itineraries */}
