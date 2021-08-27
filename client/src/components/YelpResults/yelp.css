@@ -1,0 +1,150 @@
+/**** Styles for restaurant and event  ****/
+
+.my-container {
+    height: 100vh;
+    width: 100vw;
+    overflow: visible;
+}
+
+.my-hr {
+    border: 0;
+    height: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.my-result-container {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.my-col-title {
+    margin-bottom: 20px;
+}
+
+.card-image-yelp {
+    float: left;
+    width: 40%;
+    height: 250px;
+}
+
+.card-image-yelp img {
+    height: 100%;
+}
+
+.right-content {
+    width: 60%;
+    float: left;
+}
+
+.card-title-yelp {
+    padding-left: 20px;
+}
+
+.my-card {
+    background: #FFF;
+    border-radius: 0.25em;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 0px 0px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 20px;
+}
+
+.my-card-text {
+    color: #7F8C8D;
+    font-weight: 100;
+    font-size: 0.975em;
+    line-height: 1.6;
+}
+
+.my-tag {
+    width: auto;
+    float: right;
+    right: 0px;
+    top: 15px;
+    font-weight: 550;
+    position: absolute;
+    z-index: 1000;
+    background: #fff;
+    text-align: right;
+    padding: 5px 5px 5px 15px;
+    font-size: 13px;
+    font-family: 'Open Sans', sans-serif;
+    -webkit-box-shadow: -9px 10px 16px -6px rgba(0,0,0,0.75);
+    -moz-box-shadow: -9px 10px 16px -6px rgba(0,0,0,0.75);
+    box-shadow: -9px 10px 16px -6px rgba(0,0,0,0.75); 
+}
+
+.location {
+    display: inline;
+    font-size: 12px;
+    color: #7F8C8D;
+}
+
+.my-location-icon {
+    padding-right: 8px;
+}
+
+.active-tag {
+    background-color: #aaa;
+    color: white;
+}
+
+.glow-btn:hover {
+    color: #aaa;
+}
+
+#my-link {
+    color: #2196F3;
+}
+
+#my-link:hover {
+    color: #bbb;
+}
+
+/* Small phones */
+@media all and (max-width:325px) {
+    .my-card-text {
+        font-size: 10px;
+    }
+}
+
+/* Ipads and lower */
+@media all and (max-width:768px) {
+    .card-image-yelp {
+        float: left;
+        width: 100%;
+        height: 250px;
+    }
+
+    .right-content {
+        width: 100%;
+        float: left;
+    }
+}
+
+
+/**** Drop down styles **/
+.my-heart-icon {
+    color: hotpink;
+}
+
+.my-gray-icon {
+    color: #dddddd;
+}
+
+.my-drop-btn {
+    background-color: white;
+    float: right;
+}
+
+.dropdown-content {
+    width: 250px!important;
+}
+
+.no-click {
+    pointer-events: none;
+}
+
+.clickable {
+    cursor: pointer;
+}

@@ -1,0 +1,18 @@
+/**** Itinerary styles  ****/
+
+.itin-img:hover {
+    filter: contrast(100%);
+}
+
+.itin-img {
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+    filter: contrast(70%);
+    transition: filter 0.5s cubic-bezier(0.43, 0.41, 0.22, 0.91);
+}
+
+.itin-card-title {
+    text-align: center;
+    top: 50%;
+    left: 50%;
+}

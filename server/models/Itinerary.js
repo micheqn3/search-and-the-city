@@ -6,10 +6,12 @@ const itinerarySchema = new Schema(
   {
     name: {
       type: String,
-      required: true,
-      unique: true
+      required: true
     },
-
+    userID: {
+      type: Schema.Types.ObjectId,
+      required: true
+    },
     savedItems: [ 
       {
         yelpID: {

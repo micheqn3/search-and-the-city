@@ -1,11 +1,11 @@
 // Create account page
 
 import React, { useState } from 'react';
-import './login-create.css';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
 import { Redirect } from 'react-router';
+import './css/login-create.css';
 
 const CreateAccount = () => {
 
