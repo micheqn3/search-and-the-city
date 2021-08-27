@@ -89,6 +89,10 @@
     color: white;
 }
 
+.glow-btn:hover {
+    color: #aaa;
+}
+
 #my-link {
     color: #2196F3;
 }

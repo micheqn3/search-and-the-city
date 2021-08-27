@@ -195,11 +195,11 @@ const Yelp = ( {search} ) => {
                         <div className="row">
                             <div className="col s12 center-align">
                                 <h5 className="my-col-title">Top Restaurants</h5>
-                                <div onClick={() => {filterData('rest', 'best_match'); handleToggleTag('toggleBestRest')}} className={toggleBestRest ? 'chip clickable active-tag' : 'chip clickable'}>
+                                <div onClick={() => {filterData('rest', 'best_match'); handleToggleTag('toggleBestRest')}} className={toggleBestRest ? 'chip clickable active-tag' : 'chip clickable glow-btn'}>
                                     Best Match
                                     <i className="material-icons tiny">add</i>
                                 </div>
-                                <div onClick={() => {filterData('rest', 'rating'); handleToggleTag('toggleRatingRest')}} className={toggleRatingRest ? 'chip clickable active-tag' : 'chip clickable'}>
+                                <div onClick={() => {filterData('rest', 'rating'); handleToggleTag('toggleRatingRest')}} className={toggleRatingRest ? 'chip clickable active-tag' : 'chip clickable glow-btn'}>
                                     Rating
                                     <i className="material-icons tiny">add</i>
                                 </div>
@@ -213,11 +213,11 @@ const Yelp = ( {search} ) => {
                         <div className="row">
                             <div className="col s12 center-align">
                                 <h5 className="my-col-title">Things To Do</h5>
-                                <div onClick={() => {filterData('event', 'best_match'); handleToggleTag('toggleBestEvent') }} className={toggleBestEvent ? 'chip clickable active-tag' : 'chip clickable'}>
+                                <div onClick={() => {filterData('event', 'best_match'); handleToggleTag('toggleBestEvent') }} className={toggleBestEvent ? 'chip clickable active-tag' : 'chip clickable glow-btn'}>
                                     Best Match
                                     <i className="material-icons tiny">add</i>
                                 </div>
-                                <div onClick={() => {filterData('event', 'rating'); handleToggleTag('toggleRatingEvent')}} className={toggleRatingEvent ? 'chip clickable active-tag' : 'chip clickable'}>
+                                <div onClick={() => {filterData('event', 'rating'); handleToggleTag('toggleRatingEvent')}} className={toggleRatingEvent ? 'chip clickable active-tag' : 'chip clickable glow-btn'}>
                                     Rating
                                     <i className="material-icons tiny">add</i>
                                 </div>
