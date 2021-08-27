@@ -1,8 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router';
 import './css/home.css';
+import { gsap } from 'gsap';
 
 const Home = () => {
+
+    // Gsap animation on page load
+    useEffect(() => {
+        gsap.from([".title", ".home-second-title"], {
+            opacity: 0, 
+            y: 100, 
+            duration: 1
+        });
+    },[])
+
+    useEffect(() => {
+        gsap.fromTo(".footer-descrip",
+        {autoAlpha: 0}, 
+        {autoAlpha: 1, 
+        duration: 1})
+    },[])
 
     // Set initial form state 
     const [search, setSearch] = useState('');
@@ -31,7 +48,7 @@ const Home = () => {
             <div className="hero-img">
                 <h1 className="title">Search And The City</h1>
                 <h6 className="home-second-title">Planning trips, made easier.</h6>
-                <form onSubmit={handleFormSubmit}>
+                <form className="search-form"onSubmit={handleFormSubmit}>
                     <input 
                     type="search" 
                     id="searchbox" 
