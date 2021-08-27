@@ -1,13 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Redirect } from 'react-router';
 import './css/home.css';
 import { gsap } from 'gsap';
 
 const Home = () => {
 
+    // Use refs to store reference to DOM nodes 
+    const title = useRef();
+    const descrip = useRef();
+    const footer = useRef();
+
     // Gsap animation on page load
     useEffect(() => {
-        gsap.from([".title", ".home-second-title"], {
+        gsap.from([title.current, descrip.current], {
             opacity: 0, 
             y: 100, 
             duration: 1
@@ -15,7 +20,7 @@ const Home = () => {
     },[])
 
     useEffect(() => {
-        gsap.fromTo(".footer-descrip",
+        gsap.fromTo(footer.current,
         {autoAlpha: 0}, 
         {autoAlpha: 1, 
         duration: 1})
@@ -46,8 +51,8 @@ const Home = () => {
     return (
         <div className="hero-container">
             <div className="hero-img">
-                <h1 className="title">Search And The City</h1>
-                <h6 className="home-second-title">Planning trips, made easier.</h6>
+                <h1 ref={title} className="title">Search And The City</h1>
+                <h6 ref={descrip} className="home-second-title">Planning trips, made easier.</h6>
                 <form className="search-form"onSubmit={handleFormSubmit}>
                     <input 
                     type="search" 
@@ -64,7 +69,7 @@ const Home = () => {
                     )}
                 </form>
             </div>
-            <div className="footer-descrip">
+            <div ref={footer} className="footer-descrip">
                 <p>
                     Get current weather, best restaurants, and local events for your travel needs.
                 </p>
