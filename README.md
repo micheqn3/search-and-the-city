@@ -9,7 +9,7 @@ The user is able to:
 
 - Search cities and view 4 day weather trends
 - View top restaurants and popular attractions in the area
-- Filter restaurants and attractions based on review count or best match
+- Filter restaurants and attractions based on rating or best match
 - Create and remove itineraries 
 - Add and remove items into their itineraries
   
