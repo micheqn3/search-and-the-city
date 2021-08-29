@@ -1,7 +1,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ## Search And The City
 
-A travel app that makes planning trips easier, build using the MERN stack.
+A travel app that makes planning trips easier, built using the MERN stack.
 <br> <br>
 This application allows the user to search through cities and plan their itinerary based on weather, top restaurants, and nearby events.
 
